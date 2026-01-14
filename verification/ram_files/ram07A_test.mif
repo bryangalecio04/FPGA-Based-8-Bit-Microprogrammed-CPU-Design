@@ -1,0 +1,29 @@
+-- ECE 495
+-- RAM mif file, ram07A_test.mif
+-- Dr. Hou
+-- Fall 2025
+--
+DEPTH = 256;
+WIDTH = 8;
+ADDRESS_RADIX = HEX;
+DATA_RADIX = HEX;
+CONTENT BEGIN
+
+[0..FF]: 00;
+
+-- Do not uncomment this section
+-- Test 7A TESTNZ
+--
+-- 00: loadi R0,12      R0 = 12
+-- 02: testnz R0        R0 = 12, Z=0
+-- 03: loadi R0,00      R0 = 00
+-- 05: testnz R0        R0 = 00, Z=1
+-- 06: loadi R1,33      R1 = 33
+-- 08: testnz R1        R1 = 33, Z=0
+-- 09: loadi R1,00      R1 = 00
+-- 0B: testnz R1        R0 = 00, Z=1
+-- 0C: halt
+--
+00: 10 12 70 10 00 70 11 33 71 11 00 71 F0;
+
+END;

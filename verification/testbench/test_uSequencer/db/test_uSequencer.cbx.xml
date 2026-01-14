@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="test_uSequencer">
+		<CBX_INST_ENTRY INSTANCE_NAME="|test_uSequencer|LPM_COUNTER:delay" CBX_FILE_NAME="cntr_cai.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|test_uSequencer|uSequencer:uSeq|LPM_MUX:uPC_mux" CBX_FILE_NAME="mux_p7e.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|test_uSequencer|uSequencer:uSeq|LPM_ROM:uROM|altrom:srom|altsyncram:rom_block" CBX_FILE_NAME="altsyncram_7l11.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

@@ -1,0 +1,29 @@
+-- ECE 495
+-- RAM mif file, ram10_test.mif
+-- Dr. Hou
+-- Fall 2025
+--
+DEPTH = 256;
+WIDTH = 8;
+ADDRESS_RADIX = HEX;
+DATA_RADIX = HEX;
+CONTENT BEGIN
+
+[0..FF]: 00;
+
+-- Do not uncomment this section
+-- Test 10 LOOP
+--
+-- start counting from F6, stop when at 00
+--
+-- 00: loadi R0,F6      R0 = F6
+-- 02: loadi R1,01      R0 = F6, R1 = 01
+-- 04: add R0,R1        R0 = F7 F8 F9 FA FB FC FD FE FF 00
+-- 05: testz R0         R0 = F7 F8 F9 FA FB FC FD FE FF 00
+-- 06: jumpz 04         R0 = F7 F8 F9 FA FB FC FD FE FF 00
+-- 08: halt
+--
+00: 10 FE 11 01;
+04: 50 80 A0 04 F0;
+
+END;

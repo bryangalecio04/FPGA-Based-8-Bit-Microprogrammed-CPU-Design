@@ -1,0 +1,28 @@
+-- ECE 495
+-- RAM mif file, ram08A_test.mif
+-- Dr. Hou
+-- Fall 2025
+--
+DEPTH = 256;
+WIDTH = 8;
+ADDRESS_RADIX = HEX;
+DATA_RADIX = HEX;
+CONTENT BEGIN
+
+[0..FF]: 00;
+
+-- Do not uncomment this section
+-- Test 8A TESTNZ & JUMPZ
+--
+-- 00: loadi R0,12      R0 = 12
+-- 02: testnz R0        R0 = 12, Z=0
+-- 03: jumpz B0         R0 = 12, should not jump
+-- 05: loadi R0,FF      R0 = FF
+-- 07: halt
+-- B0: loadi R0,F3
+-- B2: halt
+--
+00: 10 12 70 A0 B0 10 FF F0;
+B0: 10 F3 F0;
+
+END;

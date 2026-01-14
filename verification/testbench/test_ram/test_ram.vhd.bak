@@ -1,0 +1,65 @@
+library ieee;
+use ieee.std_logic_1164.all;
+library lpm;
+use lpm.lpm_components.all;
+
+entity lab7Part2 is
+	port(
+		clk, clear: in std_logic;
+		useqEnOut: out std_logic;
+		marData: in std_logic_vector(7 downto 0); -- connected to switches, input to MAR
+		marSegHi, marSegLo, mdrSegHi, mdrSegLo: std_logic_vector(0 to 6);
+		ctrlSignals: out std_logic_vector(0 to 7)
+	);
+end lab7Part2;
+
+architecture structural of lab7 is
+component uSequencer is
+  generic(
+    uROM_width: integer := 10;
+    uROM_file: string := ""
+  );
+  port(
+    opcode: in std_logic_vector(3 downto 0);
+    uop: out std_logic_vector(1 to (uROM_width-9));
+    debug_map_addr: out std_logic_vector(8 downto 0);  -- for debugging
+    enable, clear: in std_logic;
+    clock: in std_logic
+  );
+end component;
+
+component seven_segment_display is
+	port(
+		digit: in std_logic_vector(3 downto 0);
+		display: out std_logic_vector(0 to 6)
+	);
+end component;
+
+signal useqEnable, useqClear: std_logic;
+signal uop, marOut, memOut, mdrOut: std_logic_vector(0 to 7);
+signal marLoad, mdrLoad, memWE: std_logic;
+begin
+	clk <= not(button);
+	useqClear <= clear;
+	useqEnOut <= useqEnable;
+	marLoad <= uop(0) and useqEnable;
+	mdrLoad <= uop(1) and useqEnable;
+	memWE <= uop(2) and useqEnable;
+
+	labelG: for i in 0 to 7 generate
+		ctrlSignals(i) <= uop(i) and useqEnable;
+	end generate;
+
+	delay: lpm_counter generic map(lpm_width=>2) port map(clock=>clk, cout=>useqEnable);
+	microSequencer:
+		generic map(uROM_width=>17, uROM_file=>"test_rom_file.mif")
+		port map(opcode=>"0000", uop=>uop, debug_map_addr=>address_out, enable=>useqEnable, clear=>useqClear, clock=>clk);
+	marReg: lpm_ff
+		generic map(lpm_width=>8)
+		port map(data=>marData, q=>marOut, clock=>clk, enable=>marLoad);
+	mdrReg: lpm_ff
+		generic map(lpm_width=>8)
+		port map(data=>memOut, q=>mdrOut, clock=>clk, enable=>mdrLoad);
+	ram: lpm_ram_dq
+		generic map(lpm_widthad=>8, lpm_width=>8, lpm_file=>"test_rom_file.mif")
+		port map(data=>mdrOut, address=>marOut, q=>memOut, inclock=>clk, outclock=>clk, we=>memWE)

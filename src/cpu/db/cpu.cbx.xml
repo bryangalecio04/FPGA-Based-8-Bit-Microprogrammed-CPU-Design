@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="cpu">
+		<CBX_INST_ENTRY INSTANCE_NAME="|cpu|LPM_COUNTER:STACK_POINTER" CBX_FILE_NAME="cntr_9ak.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|cpu|LPM_MUX:MDR_MUX" CBX_FILE_NAME="mux_s7e.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|cpu|LPM_MUX:R1_MUX" CBX_FILE_NAME="mux_s7e.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|cpu|LPM_COUNTER:PC" CBX_FILE_NAME="cntr_03k.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|cpu|LPM_COUNTER:delay" CBX_FILE_NAME="cntr_cai.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|cpu|LPM_MUX:MAR_MUX" CBX_FILE_NAME="mux_s7e.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|cpu|uSequencer:uSeq|LPM_MUX:uPC_mux" CBX_FILE_NAME="mux_p7e.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|cpu|uSequencer:uSeq|LPM_ROM:uROM|altrom:srom|altsyncram:rom_block" CBX_FILE_NAME="altsyncram_lsv.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|cpu|LPM_ADD_SUB:ALU" CBX_FILE_NAME="add_sub_i9f.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|cpu|LPM_RAM_DQ:RAM|altram:sram|altsyncram:ram_block" CBX_FILE_NAME="altsyncram_hd91.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|cpu|LPM_MUX:R0_MUX" CBX_FILE_NAME="mux_s7e.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|cpu|LPM_MUX:V_MUX" CBX_FILE_NAME="mux_i7e.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|cpu|LPM_MUX:Z_MUX" CBX_FILE_NAME="mux_i7e.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

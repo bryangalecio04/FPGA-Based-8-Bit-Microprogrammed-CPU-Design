@@ -1,0 +1,28 @@
+-- ECE 495
+-- RAM mif file, ram06_test.mif
+-- Dr. Hou
+-- Fall 2025
+--
+DEPTH = 256;
+WIDTH = 8;
+ADDRESS_RADIX = HEX;
+DATA_RADIX = HEX;
+CONTENT BEGIN
+
+[0..FF]: 00;
+
+-- Do not uncomment this section
+-- Test 6 JUMP
+--
+-- 00: load R0,D3      R0 = 42
+-- 02: jump 20         R0 = 42
+-- 04: load R1,D4      should not execute
+-- 06: halt
+-- 20: load R1,D5      R0 = 42, R1 = B4
+-- 22: halt
+--
+00: 20 D3 90 20 21 D4 F0;
+20: 21 D5 F0;
+D1: 42 FF B4;
+
+END;

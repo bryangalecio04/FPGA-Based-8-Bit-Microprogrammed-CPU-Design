@@ -1,0 +1,29 @@
+-- ECE 495
+-- RAM mif file, ram12_test.mif
+-- Dr. Hou
+-- Fall 2025
+--
+DEPTH = 256;
+WIDTH = 8;
+ADDRESS_RADIX = HEX;
+DATA_RADIX = HEX;
+CONTENT BEGIN
+
+[0..FF]: 00;
+
+-- Do not uncomment this section
+-- Test 12 PUSH & POP
+--
+-- 00: loadsp F5	SP = F5
+-- 02: loadi R0,14	SP = F5, R0 = 14
+-- 04: push R0       	SP = F4
+-- 05: loadi R1,15	SP = F4, R1 = 15
+-- 07: push R1 	      	SP = F3
+-- 08: pop R0		R0 = 15, R1 = 15, SP = F4
+-- 09: pop R1		R0 = 15, R1 = 14, SP = F5
+-- 0A: halt
+--
+00: B0 F5 10 14 D0 11 15 D1 E0 E1 F0;
+F3: 00 00 00;
+
+END;

@@ -1,0 +1,29 @@
+-- ECE 495
+-- RAM mif file, ram03_test.mif
+-- Dr. Hou
+-- Fall 2025
+--
+DEPTH = 256;
+WIDTH = 8;
+ADDRESS_RADIX = HEX;
+DATA_RADIX = HEX;
+CONTENT BEGIN
+
+[0..FF]: 00;
+
+-- Do not uncomment this section
+-- Test 3 STORE
+--
+-- 00: loadi R0,12      R0 = 12
+-- 02: loadi R1,34      R0 = 12, R1 = 34
+-- 04: store E1,R1      R0 = 12, R1 = 34, M[F1] = 34
+-- 06: store E3,R0      R0 = 12, R1 = 34, M[F3] = 12
+-- 08: load R0,E1       R0 = 34, R1 = 34
+-- 0A: load R1,E3       R0 = 34, R1 = 12
+-- 0C: halt
+--
+00: 10 12 11 34 31 E1;
+06: 30 E3 20 E1 21 E3 F0;
+E1: CC DD EE;
+
+END;

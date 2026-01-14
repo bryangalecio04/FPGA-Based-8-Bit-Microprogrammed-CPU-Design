@@ -1,0 +1,27 @@
+-- ECE 495
+-- RAM mif file, ram02_test.mif
+-- Dr. Hou
+-- Fall 2025
+--
+DEPTH = 256;
+WIDTH = 8;
+ADDRESS_RADIX = HEX;
+DATA_RADIX = HEX;
+CONTENT BEGIN
+
+[0..FF]: 00;
+
+-- Do not uncomment this section
+-- Test 2 LOAD
+--
+-- 00: load R0, B3      R0 = 8D
+-- 02: load R1, B5      R0 = 8D, R1 = FE
+-- 04: load R0, D1      R0 = AE, R1 = FE
+-- 06: load R1, D2      R0 = AE, R1 = 2F
+-- 08: halt
+--
+00: 20 B3 21 B5 20 D1 21 D2 F0;
+B3: 8D 00 FE;
+D1: AE 2F;
+
+END;

@@ -1,0 +1,27 @@
+-- ECE 495
+-- RAM mif file, ram04_test.mif
+-- Dr. Hou
+-- Fall 2025
+--
+DEPTH = 256;
+WIDTH = 8;
+ADDRESS_RADIX = HEX;
+DATA_RADIX = HEX;
+CONTENT BEGIN
+
+[0..FF]: 00;
+
+-- Do not uncomment this section
+-- Test 4 MOVE & ADD
+--
+-- 00: loadi R0,5E      R0 = 5E
+-- 02: move  R1,R0      R0 = 5E, R1 = 5E
+-- 03: loadi R0,63      R0 = 63, R1 = 5E
+-- 05: add R0,R1        R0 = C1, R1 = 5E
+-- 06: add R1,R0        R0 = C1, R1 = 1F
+-- 07: move R0,R1       R0 = 1F, R1 = 1F
+-- 08: halt
+--
+00: 10 5E 41 10 63 50 51 40 F0;
+
+END;

@@ -1,0 +1,27 @@
+-- ECE 495
+-- RAM mif file, ram11_test.mif
+-- Dr. Hou
+-- Fall 2025
+--
+DEPTH = 256;
+WIDTH = 8;
+ADDRESS_RADIX = HEX;
+DATA_RADIX = HEX;
+CONTENT BEGIN
+
+[0..FF]: 00;
+
+-- Do not uncomment this section
+-- Test 11 STACK
+--
+-- 00: loadsp C0	SP = C0
+-- 02: peep R0       	R0 = C4, SP = C0
+-- 08: loadsp F3 	R0 = C4, SP = F3
+-- 09: peep R1		R0 = C4, R1 = DE, SP = F3
+-- 0D: halt
+--
+00: B0 C0 C0 B0 F3 C1 F0;
+C0: C4;
+F3: DE;
+
+END;
